@@ -85,7 +85,6 @@
     "node": ">=6.0.0"
   },
   "files": [
-    "dist/**"
-  ],
-  "main": "dist/**"
+    "dist"
+  ]
 }
