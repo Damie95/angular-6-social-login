@@ -314,7 +314,7 @@ var FacebookLoginProvider = (function (_super) {
                     if (response.status === 'connected') {
                         var /** @type {?} */ accessToken_1 = FB.getAuthResponse();
                         FB.api('/me?fields=name,email,picture', function (res) {
-                            resolve(FacebookLoginProvider.drawUser(Object.assign({}, { token: accessToken_1 }, res)));
+                            resolve(FacebookLoginProvider.drawUser(Object.assign({}, { authResponse: accessToken_1 }, res)));
                         });
                     }
                 });
@@ -330,7 +330,8 @@ var FacebookLoginProvider = (function (_super) {
         user.id = response.id;
         user.name = response.name;
         user.email = response.email;
-        user.token = response.token;
+        user.token = response.authResponse.token;
+        user.authToken = response.authResponse;
         user.image = 'https://graph.facebook.com/' + response.id + '/picture?type=normal';
         return user;
     };
@@ -341,9 +342,9 @@ var FacebookLoginProvider = (function (_super) {
         return new Promise(function (resolve, reject) {
             FB.login(function (response) {
                 if (response.authResponse) {
-                    var /** @type {?} */ accessToken_2 = FB.getAuthResponse()['accessToken'];
+                    var /** @type {?} */ accessToken_2 = FB.getAuthResponse();
                     FB.api('/me?fields=name,email,picture', function (res) {
-                        resolve(FacebookLoginProvider.drawUser(Object.assign({}, { token: accessToken_2 }, res)));
+                        resolve(FacebookLoginProvider.drawUser(Object.assign({}, { authResponse: accessToken_2 }, res)));
                     });
                 }
             }, { scope: 'email,public_profile' });
