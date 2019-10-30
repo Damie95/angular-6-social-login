@@ -5,7 +5,14 @@ export class SocialUser {
   name: string;
   image: string;
   token?: string;
-  idToken?: string
+  idToken?: string;
+  authToken: {
+      accessToken: string,
+      data_access_expiration_time: number,
+      expiresIn: number,
+      signedRequest: string,
+      userId: string
+  }; // ADDED THIS
 }
 
 export class LoginProviderClass {

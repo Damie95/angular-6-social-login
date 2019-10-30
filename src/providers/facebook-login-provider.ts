@@ -29,7 +29,7 @@ export class FacebookLoginProvider extends BaseLoginProvider {
 
           FB.getLoginStatus(function (response: any) {
             if (response.status === 'connected') {
-              const accessToken = FB.getAuthResponse()['accessToken'];
+              const accessToken = FB.getAuthResponse();
               FB.api('/me?fields=name,email,picture', (res: any) => {
                 resolve(FacebookLoginProvider.drawUser(Object.assign({}, {token: accessToken}, res)));
               });
