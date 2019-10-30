@@ -84,5 +84,5 @@
   "engines": {
     "node": ">=6.0.0"
   },
-  "main": "./dist/angular-6-social-login.umd.js"
+  "files": ["dist/**/*"]
 }
