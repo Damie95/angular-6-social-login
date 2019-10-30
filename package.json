@@ -85,7 +85,7 @@
     "node": ">=6.0.0"
   },
   "files": [
-    "dist"
+    "dist/entities/**"
   ],
   "main": "dist/angular-6-social-login.umd.js"
 }
